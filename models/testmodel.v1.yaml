@@ -1,0 +1,11 @@
+title: testmodel
+type: object
+x-examples:
+  testmodle:
+    id: '1'
+    name: fuga
+properties:
+  id:
+    type: string
+  name:
+    type: string
