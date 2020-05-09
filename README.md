@@ -1,5 +1,11 @@
 # This is open-api sample
 
+
+## required
+
+> node
+> yarn
+
 ## lets install and import this project
 
 [spotlight studio](https://stoplight.io/studio/)
