@@ -3,8 +3,7 @@
 
 ## required
 
-> node
-> yarn
+> node and yarn
 
 ## lets install and import this project
 
