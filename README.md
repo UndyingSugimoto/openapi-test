@@ -14,6 +14,9 @@
 ## lets run
 
 ```
+## 初回のみ
  yarn install
+
+## 毎回
  yarn run build
  ```
