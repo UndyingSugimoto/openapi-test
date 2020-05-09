@@ -1,0 +1,16 @@
+{
+  "name": "open-api-test",
+  "version": "1.0.0",
+  "description": "this is open-api-test",
+  "main": "index.js",
+  "repository": "https://github.com/UndyingSugimoto/openapi-test.gi",
+  "author": "UndyingSugimoto <kouji36000@yahoo.co.jp>",
+  "license": "MIT",
+  "dependencies": {
+    "@apidevtools/swagger-cli": "^4.0.2",
+    "@openapitools/openapi-generator-cli": "^1.0.13-4.3.1"
+  },
+  "scripts": {
+    "generate": "openapi-generator generate -i test-api.v1.yaml -g go -o /generate"
+  }
+}

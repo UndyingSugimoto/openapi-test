@@ -23,8 +23,6 @@ paths:
                 type: object
                 properties: {}
       operationId: get-test
-      requestBody:
-        description: ''
   /test2:
     get:
       summary: Your GET endpoint

@@ -1,0 +1,74 @@
+openapi: 3.0.0
+info:
+  title: test-api
+  version: "1.0"
+servers:
+- url: http://localhost:3000
+paths:
+  /test:
+    get:
+      operationId: get-test
+      responses:
+        "200":
+          content:
+            application/json:
+              examples: {}
+              schema:
+                type: object
+            application/xml:
+              schema:
+                properties: {}
+                type: object
+          description: OK
+      summary: Your GET endpoint
+      tags: []
+  /test2:
+    get:
+      operationId: get-test2
+      responses: {}
+      summary: Your GET endpoint
+      tags: []
+  /hoge:
+    post:
+      operationId: post-hoge
+      requestBody:
+        $ref: '#/components/requestBodies/testmodel'
+        content:
+          application/json:
+            examples: {}
+            schema:
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+              title: testmodel
+              type: object
+              x-examples:
+                testmodle:
+                  id: "1"
+                  name: fuga
+      responses: {}
+      summary: hogetest
+      tags: []
+components:
+  requestBodies:
+    testmodel:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/testmodel'
+  schemas:
+    testmodel:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      title: testmodel
+      type: object
+      x-examples:
+        testmodle:
+          id: "1"
+          name: fuga
+  securitySchemes: {}
