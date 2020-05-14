@@ -8,24 +8,33 @@ paths:
   /test:
     get:
       operationId: get-test
+      requestBody:
+        content:
+          application/json:
+            schema: {}
       responses:
         "200":
           content:
             application/json:
               examples: {}
               schema:
-                type: object
+                $ref: '#/components/schemas/NameAndId'
             application/xml:
               schema:
-                properties: {}
-                type: object
+                $ref: '#/components/schemas/NameAndId'
           description: OK
       summary: Your GET endpoint
       tags: []
   /test2:
     get:
       operationId: get-test2
-      responses: {}
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NameAndId'
+          description: OK
       summary: Your GET endpoint
       tags: []
   /hoge:
@@ -51,14 +60,73 @@ paths:
       responses: {}
       summary: hogetest
       tags: []
+  /number1:
+    get:
+      description: 県、市、年度を指定することで総人口と出生数、死亡数が返ってくる
+      operationId: get-number1
+      requestBody:
+        $ref: '#/components/requestBodies/Number1Req'
+        content:
+          application/json:
+            schema:
+              example:
+                prefCode: prefCode
+                year: 1958.0082819046102
+                cityCode: cityCode
+              properties:
+                prefCode:
+                  description: 県コード
+                  type: string
+                cityCode:
+                  description: 都市コード
+                  type: string
+                year:
+                  description: 年度
+                  maximum: 2050
+                  minimum: 1950
+                  type: number
+              required:
+              - cityCode
+              - prefCode
+              - year
+              title: Number1Req
+              type: object
+              x-examples:
+                サンプル:
+                  prefCode: "1"
+                  cityCode: "1"
+                  year: "1991"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Number1Res'
+          description: OK
+      summary: test
+      tags: []
 components:
   requestBodies:
+    Number1Req:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Number1Req'
     testmodel:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/testmodel'
   schemas:
+    NameAndId:
+      example:
+        name: name
+        id: id
+      properties:
+        name:
+          type: string
+        id:
+          type: string
     testmodel:
       properties:
         id:
@@ -71,4 +139,47 @@ components:
         testmodle:
           id: "1"
           name: fuga
+    Number1Req:
+      example:
+        prefCode: prefCode
+        year: 1958.0082819046102
+        cityCode: cityCode
+      properties:
+        prefCode:
+          description: 県コード
+          type: string
+        cityCode:
+          description: 都市コード
+          type: string
+        year:
+          description: 年度
+          maximum: 2050
+          minimum: 1950
+          type: number
+      required:
+      - cityCode
+      - prefCode
+      - year
+      title: Number1Req
+      type: object
+      x-examples:
+        サンプル:
+          prefCode: "1"
+          cityCode: "1"
+          year: "1991"
+    Number1Res:
+      example:
+        numberOfBith: 6.027456183070403
+        totalPopulation: 0.8008281904610115
+        numberOfDeath: 1.4658129805029452
+      properties:
+        totalPopulation:
+          description: 総人口
+          type: number
+        numberOfBith:
+          description: 出生数
+          type: number
+        numberOfDeath:
+          description: 死亡数
+          type: number
   securitySchemes: {}

@@ -16,18 +16,28 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: ../models/NameAndId.v1.yaml
               examples: {}
             application/xml:
               schema:
                 type: object
                 properties: {}
       operationId: get-test
+      requestBody:
+        content:
+          application/json:
+            schema: {}
   /test2:
     get:
       summary: Your GET endpoint
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/NameAndId.v1.yaml
       operationId: get-test2
   /hoge:
     post:
@@ -42,6 +52,25 @@ paths:
               $ref: ../models/testmodel.v1.yaml
             examples: {}
       description: ''
+  /number1:
+    get:
+      summary: test
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Number1Res.v1.yaml
+      operationId: get-number1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Number1Req.v1.yaml
+        description: ''
+      description: 県、市、年度を指定することで総人口と出生数、死亡数が返ってくる
 components:
   schemas: {}
   securitySchemes: {}

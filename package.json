@@ -12,7 +12,7 @@
   },
   "scripts": {
     "bandle": "npx swagger-cli bundle ./reference/* -o ./bundled/output.yaml -r ./models/* -t yaml",
-    "generate": "npx openapi-generator  generate -i ./bundled/output.yaml -g go -o ./generated",
+    "generate": "npx openapi-generator  generate -i ./bundled/output.yaml -g go-server -o ./generated",
     "build": "npm run bandle && npm run generate"
   }
 }

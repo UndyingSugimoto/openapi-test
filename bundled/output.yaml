@@ -16,18 +16,40 @@ paths:
           content:
             application/json:
               schema:
+                title: NameAndId
                 type: object
+                properties:
+                  name:
+                    type: string
+                  id:
+                    type: string
               examples: {}
             application/xml:
               schema:
                 type: object
                 properties: {}
       operationId: get-test
+      requestBody:
+        content:
+          application/json:
+            schema: {}
   /test2:
     get:
       summary: Your GET endpoint
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: NameAndId
+                type: object
+                properties:
+                  name:
+                    type: string
+                  id:
+                    type: string
       operationId: get-test2
   /hoge:
     post:
@@ -52,6 +74,58 @@ paths:
                   type: string
             examples: {}
       description: ''
+  /number1:
+    get:
+      summary: test
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: Number1Res
+                type: object
+                properties:
+                  totalPopulation:
+                    type: number
+                    description: 総人口
+                  numberOfBith:
+                    type: number
+                    description: 出生数
+                  numberOfDeath:
+                    type: number
+                    description: 死亡数
+      operationId: get-number1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Number1Req
+              type: object
+              x-examples:
+                サンプル:
+                  prefCode: '1'
+                  cityCode: '1'
+                  year: '1991'
+              properties:
+                prefCode:
+                  type: string
+                  description: 県コード
+                cityCode:
+                  type: string
+                  description: 都市コード
+                year:
+                  type: number
+                  minimum: 1950
+                  maximum: 2050
+                  description: 年度
+              required:
+                - prefCode
+                - cityCode
+                - year
+        description: ''
+      description: 県、市、年度を指定することで総人口と出生数、死亡数が返ってくる
 components:
   schemas: {}
   securitySchemes: {}

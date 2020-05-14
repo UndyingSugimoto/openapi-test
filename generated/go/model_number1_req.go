@@ -8,8 +8,15 @@
  */
 
 package openapi
-// Testmodel struct for Testmodel
-type Testmodel struct {
-	Id string `json:"id,omitempty"`
-	Name string `json:"name,omitempty"`
+
+type Number1Req struct {
+
+	// 県コード
+	PrefCode string `json:"prefCode"`
+
+	// 都市コード
+	CityCode string `json:"cityCode"`
+
+	// 年度
+	Year float32 `json:"year"`
 }

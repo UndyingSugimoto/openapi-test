@@ -1,0 +1,23 @@
+title: Number1Req
+type: object
+x-examples:
+  サンプル:
+    prefCode: '1'
+    cityCode: '1'
+    year: '1991'
+properties:
+  prefCode:
+    type: string
+    description: 県コード
+  cityCode:
+    type: string
+    description: 都市コード
+  year:
+    type: number
+    minimum: 1950
+    maximum: 2050
+    description: 年度
+required:
+  - prefCode
+  - cityCode
+  - year

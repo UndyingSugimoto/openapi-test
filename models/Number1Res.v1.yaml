@@ -1,0 +1,12 @@
+title: Number1Res
+type: object
+properties:
+  totalPopulation:
+    type: number
+    description: 総人口
+  numberOfBith:
+    type: number
+    description: 出生数
+  numberOfDeath:
+    type: number
+    description: 死亡数
